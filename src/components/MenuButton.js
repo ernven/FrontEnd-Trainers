@@ -30,10 +30,11 @@ export default function MenuButton() {
                 <Paper>
                     <ClickAwayListener onClickAway={handleClose}>
                         <MenuList autoFocusItem={open} >
-                            <Link to="/" style={{ textDecoration: 'none', color: '#000000' }}>
+                        <Link to="/" style={{ textDecoration: 'none', color: '#000000' }}>
                                 <MenuItem onClick={handleClose}>Customers</MenuItem>
+                            </Link><Link to="/trainings" style={{ textDecoration: 'none', color: '#000000' }}>
+                                <MenuItem onClick={handleClose}>Trainings</MenuItem>
                             </Link>
-                            {/* <MenuItem onClick={handleClose}>Calendar</MenuItem> */}
                         </MenuList>
                     </ClickAwayListener>
                 </Paper>

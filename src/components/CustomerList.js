@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react'
-import { Button } from '@material-ui/core'
+import { AppBar, Toolbar, Typography, Button } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
 import Table from './Table'
@@ -41,7 +41,7 @@ export default function CustomerList() {
         },{
             accessor: 'links[2].href',
             Filter: '',
-            Cell: row => <Link to={{ pathname: '/trainings', url: row.cell.value }}
+            Cell: row => <Link to={{ pathname: '/personal', url: row.cell.value }}
                             style={{ textDecoration: 'none' }} >
                             <Button size='small' color='primary' style={{ fontSize: '0.7rem'}} >
                                     View Trainings
@@ -54,6 +54,13 @@ export default function CustomerList() {
 
     return (
         <div>
+            <AppBar position='static' style={{ background: '#ffffff', zIndex: 1 }} >
+                <Toolbar>
+                <Typography variant='h6' style={{ color: '#000000', paddingLeft: 6 }} >
+                    Customers
+                </Typography>
+                </Toolbar>
+            </AppBar>
             <Table columns={columns} data={dataMemo} />
         </div>
     );

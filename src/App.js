@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MenuButton from './components/MenuButton'
 import CustomerList from './components/CustomerList'
 import TrainingsList from './components/TrainingsList'
+import TrainingsCustomer from './components/TrainingsCustomer'
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <div className="App">
         <CssBaseline />
         <AppBar position="static" style={{ background: "#69e65e" }} >
-          <Toolbar>
+          <Toolbar >
             <MenuButton />
             <Typography variant='h6' >
               Personal Trainers Co.
@@ -23,6 +24,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={CustomerList} />
           <Route path="/trainings" component={TrainingsList} />
+          <Route path="/personal" component={TrainingsCustomer} />
           <Route path="/calendar" />
           <Route render={() => <h1>Page not found</h1>} />
         </Switch>
