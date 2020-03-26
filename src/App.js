@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AppBar from '@material-ui/core/AppBar'
+import { Toolbar, CssBaseline, Typography } from '@material-ui/core'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import MenuButton from './components/MenuButton'
+import CustomerList from './components/CustomerList'
+import TrainingsList from './components/TrainingsList'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <CssBaseline />
+        <AppBar position="static" style={{ background: "#69e65e" }} >
+          <Toolbar>
+            <MenuButton />
+            <Typography variant='h6' >
+              Personal Trainers Co.
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Switch>
+          <Route exact path="/" component={CustomerList} />
+          <Route path="/trainings" component={TrainingsList} />
+          <Route path="/calendar" />
+          <Route render={() => <h1>Page not found</h1>} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
