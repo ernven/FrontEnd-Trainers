@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Besides React as my main library, for this project I have also used:
 
-### `Material-UI`
+### Material-UI
 
 For UI elements, including the Table components.
 [Source](https://material-ui.com)
