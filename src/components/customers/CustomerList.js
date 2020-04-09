@@ -7,7 +7,7 @@ import ListIcon from '@material-ui/icons/List';
 import AddCustomer from './AddCustomer';
 import EditCustomer from './EditCustomer';
 import DeleteCustomerAlert from "./DeleteCustomer";
-import Table from './Table';
+import Table from '../Table';
 
 export default function CustomerList() {
     const [data, setData] = useState([]);

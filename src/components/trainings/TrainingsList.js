@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import Snackbar from '@material-ui/core/Snackbar';
 
-import Table from './Table';
+import Table from '../Table';
 import DeleteTraining from './DeleteTraining';
 
 export default function CustomerList() {

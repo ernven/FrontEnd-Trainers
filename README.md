@@ -10,7 +10,7 @@ Besides React as my main library, for this project I have also used:
 
 ### Material-UI
 
-For UI elements, including the Table components.
+For the UI elements, including icons and the Table components.
 [Source](https://material-ui.com)
 
 ### React Router
@@ -22,3 +22,8 @@ Used for navigation along the application.
 
 Version 7. For building headless tables using hooks.
 [Source](https://react-table.js.org)
+
+### Extras
+
+[Moment.js](https://momentjs.com) has been used for Date handling.
+[Material-UI Pickers](https://material-ui-pickers.dev) are used for their high quality date and time pickers which blend seamlessly into the program's interface.

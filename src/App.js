@@ -4,9 +4,10 @@ import { Toolbar, CssBaseline, Typography } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import MenuButton from './components/MenuButton';
-import CustomerList from './components/CustomerList';
-import TrainingsList from './components/TrainingsList';
-import TrainingsCustomer from './components/TrainingsCustomer';
+import CustomerList from './components/customers/CustomerList';
+import TrainingsList from './components/trainings/TrainingsList';
+import TrainingsCustomer from './components/trainings/TrainingsCustomer';
+import Calendar from './components/Calendar';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
           <Route exact path="/" component={CustomerList} />
           <Route path="/trainings" component={TrainingsList} />
           <Route path="/personal" component={TrainingsCustomer} />
-          <Route path="/calendar" />
+          <Route path="/calendar" component={Calendar} />
           <Route render={() => <h1>Page not found</h1>} />
         </Switch>
       </div>

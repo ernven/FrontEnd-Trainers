@@ -4,7 +4,7 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
 import Snackbar from '@material-ui/core/Snackbar';
 
-import Table from './Table';
+import Table from '../Table';
 import DeleteTraining from './DeleteTraining';
 import AddTraining from './AddTraining';
 
