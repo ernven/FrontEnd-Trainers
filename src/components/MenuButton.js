@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { IconButton, Popper, MenuItem, MenuList, Grow, Paper, ClickAwayListener } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { IconButton, Popper, MenuItem, MenuList, Grow, Paper, ClickAwayListener } from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom';
 
 export default function MenuButton() {
     const [open, setOpen] = useState(false);

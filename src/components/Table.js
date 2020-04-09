@@ -1,12 +1,14 @@
-import React from 'react'
-import { useTable, useSortBy, useFilters, usePagination } from 'react-table'
+import React from 'react';
+import { useTable, useSortBy, useFilters, usePagination } from 'react-table';
 import { TableSortLabel, TextField, TableFooter, TablePagination } from '@material-ui/core';
-import MaterialUiTable from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import SearchIcon from '@material-ui/icons/Search'
+import MaterialUiTable from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import SearchIcon from '@material-ui/icons/Search';
+
+// This is used by the filter/search functionality of the table
 
 const columnFilter = ({ column: { filterValue, setFilter }, }) => (
     <TextField
@@ -15,6 +17,8 @@ const columnFilter = ({ column: { filterValue, setFilter }, }) => (
         onChange={e => setFilter(e.target.value || undefined)}
         InputProps={{ startAdornment: <SearchIcon fontSize='small' color='disabled' /> }} />  
 )
+
+// This is my implementation of react-table v7, which is a bit different from v6 that we have used in class
 
 export default function Table(props) {
     const defaultColumn = React.useMemo(() => ({ Filter: columnFilter }), [])

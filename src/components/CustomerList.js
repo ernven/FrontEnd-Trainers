@@ -1,23 +1,86 @@
-import React, { useEffect, useState, useMemo } from 'react'
-import { AppBar, Toolbar, Typography, Button } from '@material-ui/core'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import Snackbar from '@material-ui/core/Snackbar';
+import ListIcon from '@material-ui/icons/List';
 
-import Table from './Table'
+import AddCustomer from './AddCustomer';
+import EditCustomer from './EditCustomer';
+import DeleteCustomerAlert from "./DeleteCustomer";
+import Table from './Table';
 
 export default function CustomerList() {
     const [data, setData] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [message, setMessage] = useState('');
+
+    const mainUrl = 'https://customerrest.herokuapp.com/api/';
 
     useEffect(() => getCustomers(), [])
 
     const getCustomers = () => {
-        fetch('https://customerrest.herokuapp.com/api/customers')
+        fetch(mainUrl + 'customers')
         .then(response => response.json())
         .then(responseData => setData(responseData.content))
         .catch(err => console.error(err))
     }
 
+    const addCustomer = (customer) => {
+        fetch(mainUrl + 'customers', {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(customer)
+        })
+        .then(_ => {
+            getCustomers();
+            setMessage("New customer added!");
+            setOpen(true);
+        })
+        .catch(err => console.error(err))
+    }
+
+    const editCustomer = useCallback((customer, url) => {
+        fetch(url, {
+            method: 'PUT',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(customer)
+        })
+        .then(_ => {
+            getCustomers();
+            setMessage("Customer info updated!");
+            setOpen(true);
+        })
+        .catch(err => console.error(err))
+    }, [])
+
+    const deleteCustomer = useCallback((customerURL) => {
+        fetch(customerURL, {method: 'DELETE'})
+        .then(_ => {
+            getCustomers()
+            setMessage("Customer deleted!");
+            setOpen(true);
+        })
+        .catch(err => console.error(err))
+    }, [])
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+    
     const columns = useMemo(() => [
         {
+            Header: 'Actions',
+            Filter: '',
+            sortable: false,
+            Cell: data => <div style={{display: 'flex', flexDirection: 'row'}}>
+                            <EditCustomer customer={data.row.original} editCustomer={editCustomer} />
+                            <DeleteCustomerAlert url={data.row.original.links[0].href} deleteCustomer={deleteCustomer} />
+                        </div>
+        },{
             Header: 'First name',
             accessor: 'firstname'
         },{
@@ -27,7 +90,7 @@ export default function CustomerList() {
             Header: 'Address',
             accessor: 'streetaddress'
         },{
-            Header: 'Post Code',
+            Header: 'Postcode',
             accessor: 'postcode'
         },{
             Header: 'City',
@@ -39,16 +102,23 @@ export default function CustomerList() {
             Header: 'Phone',
             accessor: 'phone'
         },{
-            accessor: 'links[2].href',
+            Header: 'Trainings',
             Filter: '',
-            Cell: row => <Link to={{ pathname: '/personal', url: row.cell.value }}
-                            style={{ textDecoration: 'none' }} >
-                            <Button size='small' color='primary' style={{ fontSize: '0.7rem'}} >
-                                    View Trainings
-                            </Button>
-                        </Link>
+            sortable: false,
+            Cell: data => <div>
+                            <Link to={{ pathname: '/personal', trainingsUrl: data.row.original.links[2].href, customerUrl: data.row.original.links[0].href,
+                                    customerName: data.row.original.firstname + ' ' + data.row.original.lastname }}
+                                style={{ textDecoration: 'none' }} >
+                                <Button
+                                        style={{marginRight: 15}}
+                                        aria-label="View Trainings"
+                                        startIcon={<ListIcon />}>
+                                    View
+                                </Button>
+                            </Link>
+                        </div>
         }
-    ], [])
+    ], [deleteCustomer, editCustomer])
 
     const dataMemo = useMemo(() => data, [data])
 
@@ -61,7 +131,13 @@ export default function CustomerList() {
                 </Typography>
                 </Toolbar>
             </AppBar>
+            <AddCustomer addCustomer={addCustomer} />
             <Table columns={columns} data={dataMemo} />
+            <Snackbar
+                open={open}
+                autoHideDuration={4000}
+                onClose={handleClose}
+                message={message} />
         </div>
     );
 }

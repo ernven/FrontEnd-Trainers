@@ -1,12 +1,12 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar'
-import { Toolbar, CssBaseline, Typography } from '@material-ui/core'
+import AppBar from '@material-ui/core/AppBar';
+import { Toolbar, CssBaseline, Typography } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import MenuButton from './components/MenuButton'
-import CustomerList from './components/CustomerList'
-import TrainingsList from './components/TrainingsList'
-import TrainingsCustomer from './components/TrainingsCustomer'
+import MenuButton from './components/MenuButton';
+import CustomerList from './components/CustomerList';
+import TrainingsList from './components/TrainingsList';
+import TrainingsCustomer from './components/TrainingsCustomer';
 
 function App() {
   return (

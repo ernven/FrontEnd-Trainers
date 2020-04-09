@@ -1,3 +1,7 @@
+# Training Co. Front End
+
+This project was created as part of my Front-End development course at Haaga-Helia University of Applied Sciences.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Libraries and components used
