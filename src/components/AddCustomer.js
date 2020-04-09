@@ -45,7 +45,6 @@ export default function AddCustomer(props) {
                 </Button>
             </div>
             <Dialog
-                disableBackdropClick={true}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title" >

@@ -57,7 +57,6 @@ export default function AddTraining(props) {
                 Add New Training
             </Button>
             <Dialog
-                disableBackdropClick={true}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title" >
@@ -67,14 +66,12 @@ export default function AddTraining(props) {
                 <DialogContent>
                     <MuiPickersUtilsProvider utils={MomentUtils} style={{paddingBottom: 25}}>
                         <DatePicker
-                            variant="inline"
                             label="Date"
                             name="dateObject"
                             format="DD.MM.YYYY"
                             value={dateObject}
                             onChange={d => dateChangeHandler(d)} />
                         <TimePicker
-                            id="time-picker"
                             label="Time"
                             value={dateObject}
                             onChange={t => dateChangeHandler(t)}

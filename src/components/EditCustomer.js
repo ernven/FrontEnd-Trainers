@@ -44,7 +44,6 @@ export default function EditCustomer(props) {
                 <EditIcon />
             </IconButton>
             <Dialog
-                disableBackdropClick={true}
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title" >
