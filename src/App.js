@@ -14,7 +14,7 @@ function App() {
     <Router>
       <div className="App">
         <CssBaseline />
-        <AppBar position="static" style={{ background: "#69e65e" }} >
+        <AppBar position="static" style={{ background: "#5fd455", transform: "translate3d(0, 0, 50px)", zIndex: 5 }} >
           <Toolbar >
             <MenuButton />
             <Typography variant='h6' >

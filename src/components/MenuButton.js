@@ -25,14 +25,14 @@ export default function MenuButton() {
                 onClick={handleClickOpen}>
                     <MenuIcon />
             </IconButton>
-            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition style={{ transform: "translate3d(0, 0, 90px)", zIndex: 10}} >
             {({ TransitionProps, placement }) => (
                 <Grow
                 {...TransitionProps}
                 style={{ transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom' }}>
-                <Paper>
+                <Paper elevation={3}>
                     <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList autoFocusItem={open} >
+                        <MenuList autoFocusItem={open}>
                             <Link to="/" style={{ textDecoration: 'none', color: '#000000' }}>
                                 <MenuItem onClick={handleClose}><PersonIcon style={{paddingRight: 6}} />Customers</MenuItem>
                             </Link>
