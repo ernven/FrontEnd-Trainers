@@ -1,7 +1,6 @@
 {
   "name": "training_co",
   "version": "0.1.0",
-  "main": "index.js",
   "engines": {
     "node": "12.14.x"
   },
@@ -30,9 +29,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
